@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "version": "0.0.1",
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "description": "Sample application showing how to create an extension with Create React App",
+  "short_name": "Demo Atlas",
+  "name": "Portal 2 Demo Atlas",
+  "description": "Application to replace steamIDs with displayNames in demos from board.portal2.sr",
   "browser_action": {
     "default_title": "CRE",
     "default_popup": "popup.html"
@@ -13,7 +13,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://board.portal2.sr/*"],
       "js": ["contentScript.bundle.js"]
     }
   ],
@@ -23,6 +23,11 @@
     "128": "img/icon-128.png"
   },
   "options_page": "options.html",
-  "permissions": ["activeTab"],
+  "permissions": [
+    "https://board.portal2.sr/*",
+    "http://localhost:5000/*",
+    "storage",
+    "downloads"
+  ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
